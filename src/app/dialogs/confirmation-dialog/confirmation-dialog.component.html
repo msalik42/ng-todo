@@ -1,0 +1,10 @@
+<h1 mat-dialog-title> {{title}} </h1>
+<div mat-dialog-content>
+  <p> {{body}} </p>
+</div>
+<div mat-dialog-actions>
+  <div class="flex flex-1 justify-end">
+    <button mat-button [mat-dialog-close]="true"> {{acceptButtonText}} </button>
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial> {{denyButtonText}} </button>
+  </div>
+</div>

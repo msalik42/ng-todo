@@ -1,0 +1,14 @@
+.mat-mdc-snack-bar-container.success .mdc-snackbar__surface {
+  background: #34a853;
+  color: #ffffff;
+}
+
+.mat-mdc-snack-bar-container.error .mdc-snackbar__surface {
+  background: #ea4335;
+  color: #ffffff;
+}
+
+.mat-mdc-snack-bar-container.warning.mdc-snackbar__surface {
+  background: #fbbc05;
+  color: #ffffff;
+}

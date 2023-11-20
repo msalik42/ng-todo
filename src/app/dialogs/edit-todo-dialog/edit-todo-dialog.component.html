@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <div class="container pt-4">
+    <form [formGroup]="todoForm">
+
+      <mat-form-field appearance="outline" class="w-[100%]">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="title">
+        <mat-error *ngIf="todoForm.get('title').hasError('required')">Title is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-[100%]">
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="description">
+        <mat-error *ngIf="todoForm.get('description').hasError('required')">Description is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-[100%]">
+        <mat-label>Choose a due date</mat-label>
+        <input readonly matInput [matDatepicker]="due_date" formControlName="dueDate">
+        <mat-datepicker-toggle matIconSuffix [for]="due_date"></mat-datepicker-toggle>
+        <mat-datepicker #due_date></mat-datepicker>
+        <mat-error *ngIf="todoForm.get('dueDate').hasError('required')">Due date is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-[100%]">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of status_list;" [value]="status.id">{{status.title}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="todoForm.get('status').hasError('required')">Status is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-[100%]">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option *ngFor="let priority of priority_list;" [value]="priority.id">{{priority.title}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="todoForm.get('priority').hasError('required')">Priority is required</mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="flex flex-1 justify-end">
+    <button mat-button (click)="submitForm()"> {{ acceptButtonText }} </button>
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial> {{ denyButtonText }} </button>
+  </div>
+</div>
